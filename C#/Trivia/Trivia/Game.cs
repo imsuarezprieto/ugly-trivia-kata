@@ -133,34 +133,47 @@ namespace Trivia
 		{
 			if (!_inPenaltyBox[_currentPlayer])
 			{
-				{
-					Console.WriteLine("Answer was corrent!!!!");
-					_purses[_currentPlayer]++;
-					Console.WriteLine($"{_players[_currentPlayer]} now has {_purses[_currentPlayer]} Gold Coins.");
-
-					var winner = DidPlayerWin();
-					_currentPlayer++;
-					if (_currentPlayer == _players.Count) _currentPlayer = 0;
-
-					return winner;
-				}
+				return CorrectAnswerInPenaltyBox();
 			}
 			if (_isGettingOutOfPenaltyBox)
 			{
-				Console.WriteLine("Answer was correct!!!!");
-				_purses[_currentPlayer]++;
-				Console.WriteLine($"{_players[_currentPlayer]} now has {_purses[_currentPlayer]} Gold Coins.");
-
-				var winner = DidPlayerWin();
-				_currentPlayer++;
-				if (_currentPlayer == _players.Count) _currentPlayer = 0;
-
-				return winner;
+				return CorrectAnswerOutPenaltyBox();
 			}
 
+			return CorrectAnswer();
+		}
+
+		private bool CorrectAnswer()
+		{
 			_currentPlayer++;
 			if (_currentPlayer == _players.Count) _currentPlayer = 0;
 			return true;
+		}
+
+		private bool CorrectAnswerOutPenaltyBox()
+		{
+			Console.WriteLine("Answer was correct!!!!");
+			_purses[_currentPlayer]++;
+			Console.WriteLine($"{_players[_currentPlayer]} now has {_purses[_currentPlayer]} Gold Coins.");
+
+			var winner = DidPlayerWin();
+			_currentPlayer++;
+			if (_currentPlayer == _players.Count) _currentPlayer = 0;
+
+			return winner;
+		}
+
+		private bool CorrectAnswerInPenaltyBox()
+		{
+			Console.WriteLine("Answer was corrent!!!!");
+			_purses[_currentPlayer]++;
+			Console.WriteLine($"{_players[_currentPlayer]} now has {_purses[_currentPlayer]} Gold Coins.");
+
+			var winner = DidPlayerWin();
+			_currentPlayer++;
+			if (_currentPlayer == _players.Count) _currentPlayer = 0;
+
+			return winner;
 		}
 
 		public bool WrongAnswer()
