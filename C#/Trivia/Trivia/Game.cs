@@ -42,7 +42,7 @@ namespace Trivia
 			return true;
 		}
 
-		public int HowManyPlayers()
+		private int HowManyPlayers()
 		{
 			return _players.Count;
 		}
