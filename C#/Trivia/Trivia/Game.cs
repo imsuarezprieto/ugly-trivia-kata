@@ -131,11 +131,10 @@ namespace Trivia
 
 		public bool WasCorrectlyAnswered()
 		{
-			if (_inPenaltyBox[_currentPlayer])
+			if (!_inPenaltyBox[_currentPlayer])
 			{
-				if (_isGettingOutOfPenaltyBox)
 				{
-					Console.WriteLine("Answer was correct!!!!");
+					Console.WriteLine("Answer was corrent!!!!");
 					_purses[_currentPlayer]++;
 					Console.WriteLine($"{_players[_currentPlayer]} now has {_purses[_currentPlayer]} Gold Coins.");
 
@@ -145,14 +144,10 @@ namespace Trivia
 
 					return winner;
 				}
-
-				_currentPlayer++;
-				if (_currentPlayer == _players.Count) _currentPlayer = 0;
-				return true;
 			}
-
+			if (_isGettingOutOfPenaltyBox)
 			{
-				Console.WriteLine("Answer was corrent!!!!");
+				Console.WriteLine("Answer was correct!!!!");
 				_purses[_currentPlayer]++;
 				Console.WriteLine($"{_players[_currentPlayer]} now has {_purses[_currentPlayer]} Gold Coins.");
 
@@ -162,6 +157,10 @@ namespace Trivia
 
 				return winner;
 			}
+
+			_currentPlayer++;
+			if (_currentPlayer == _players.Count) _currentPlayer = 0;
+			return true;
 		}
 
 		public bool WrongAnswer()
