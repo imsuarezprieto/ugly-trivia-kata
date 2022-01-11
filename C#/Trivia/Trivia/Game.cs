@@ -53,7 +53,7 @@ namespace Trivia
 
 			if (_inPenaltyBox[_currentPlayer])
 			{
-				if (roll % 2 != 0)
+				if (RollEven(roll))
 				{
 					_isGettingOutOfPenaltyBox = true;
 
@@ -80,6 +80,11 @@ namespace Trivia
 				Console.WriteLine($"The category is {CurrentCategory()}");
 				AskQuestion();
 			}
+		}
+
+		private bool RollEven(int roll)
+		{
+			return roll % 2 != 0;
 		}
 
 		private void AskQuestion()
