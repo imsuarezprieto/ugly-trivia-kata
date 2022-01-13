@@ -6,41 +6,23 @@ namespace Trivia
 {
 	public class Questions
 	{
-		private readonly Queue<string> _popQuestions     = new Queue<string>();
-		private readonly Queue<string> _scienceQuestions = new Queue<string>();
-		private readonly Queue<string> _sportsQuestions  = new Queue<string>();
-		private readonly Queue<string> _rockQuestions    = new Queue<string>();
+		private readonly Dictionary<Category, Queue<string>> _questions =
+				new Dictionary<Category, Queue<string>>(
+						Category.Categories
+								.Select(category =>
+										new KeyValuePair<Category, Queue<string>>(
+												category,
+												new Queue<string>(
+														Enumerable.Range(0, 50)
+																.Select(n => $"{category} Question {n}")
+												)
+										)
+								)
+				);
 
-		public Questions()
-		{
-			for (var i = 0; i < 50; i++)
-			{
-				_popQuestions.Enqueue("Pop Question " + i);
-				_scienceQuestions.Enqueue(("Science Question " + i));
-				_sportsQuestions.Enqueue(("Sports Question "   + i));
-				_rockQuestions.Enqueue("Rock Question " + i);
-			}
-		}
-
-		public void AskQuestion(Category currentCategory)
-		{
-			switch (currentCategory)
-			{
-				case Category.Pop:
-					Console.WriteLine(this._popQuestions.Dequeue());
-					break;
-				case Category.Science:
-					Console.WriteLine(this._scienceQuestions.Dequeue());
-					break;
-				case Category.Sports:
-					Console.WriteLine(this._sportsQuestions.Dequeue());
-					break;
-				case Category.Rock:
-					Console.WriteLine(this._rockQuestions.Dequeue());
-					break;
-				default:
-					throw new ArgumentOutOfRangeException(nameof(currentCategory));
-			}
-		}
+		public void AskQuestion(Category category) =>
+				Console.WriteLine(
+						_questions[category].Dequeue()
+				);
 	}
 }
