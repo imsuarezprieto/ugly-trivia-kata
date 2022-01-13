@@ -24,21 +24,22 @@ namespace Trivia
 
 		public void AskQuestion(Category currentCategory)
 		{
-			if (currentCategory == Category.Pop)
+			switch (currentCategory)
 			{
-				Console.WriteLine(this._popQuestions.Dequeue());
-			}
-			if (currentCategory == Category.Science)
-			{
-				Console.WriteLine(this._scienceQuestions.Dequeue());
-			}
-			if (currentCategory == Category.Sports)
-			{
-				Console.WriteLine(this._sportsQuestions.Dequeue());
-			}
-			if (currentCategory == Category.Rock)
-			{
-				Console.WriteLine(this._rockQuestions.Dequeue());
+				case Category.Pop:
+					Console.WriteLine(this._popQuestions.Dequeue());
+					break;
+				case Category.Science:
+					Console.WriteLine(this._scienceQuestions.Dequeue());
+					break;
+				case Category.Sports:
+					Console.WriteLine(this._sportsQuestions.Dequeue());
+					break;
+				case Category.Rock:
+					Console.WriteLine(this._rockQuestions.Dequeue());
+					break;
+				default:
+					throw new ArgumentOutOfRangeException(nameof(currentCategory));
 			}
 		}
 	}
