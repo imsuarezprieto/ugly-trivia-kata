@@ -8,10 +8,10 @@ namespace Trivia
 
         public static void Main(string[] args)
         {
-	        RunGame();
+	        RunGame(new Random());
         }
 
-        public static void RunGame()
+        public static void RunGame(Random random)
         {
 	        var aGame = new Game();
 
@@ -19,13 +19,11 @@ namespace Trivia
 	        aGame.Add("Pat");
 	        aGame.Add("Sue");
 
-	        var rand = new Random();
-
 	        do
 	        {
-		        aGame.Roll(rand.Next(5) + 1);
+		        aGame.Roll(random.Next(5) + 1);
 
-		        if (rand.Next(9) == 7)
+		        if (random.Next(9) == 7)
 		        {
 			        _notAWinner = aGame.WrongAnswer();
 		        }
