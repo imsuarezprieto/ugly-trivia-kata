@@ -6,19 +6,19 @@ namespace Trivia
 {
 	public class Questions
 	{
-		private readonly LinkedList<string> _popQuestions     = new LinkedList<string>();
-		private readonly LinkedList<string> _scienceQuestions = new LinkedList<string>();
-		private readonly LinkedList<string> _sportsQuestions  = new LinkedList<string>();
-		private readonly LinkedList<string> _rockQuestions    = new LinkedList<string>();
+		private readonly Queue<string> _popQuestions     = new Queue<string>();
+		private readonly Queue<string> _scienceQuestions = new Queue<string>();
+		private readonly Queue<string> _sportsQuestions  = new Queue<string>();
+		private readonly Queue<string> _rockQuestions    = new Queue<string>();
 
 		public Questions()
 		{
 			for (var i = 0; i < 50; i++)
 			{
-				_popQuestions.AddLast("Pop Question " + i);
-				_scienceQuestions.AddLast(("Science Question " + i));
-				_sportsQuestions.AddLast(("Sports Question "   + i));
-				_rockQuestions.AddLast("Rock Question " + i);
+				_popQuestions.Enqueue("Pop Question " + i);
+				_scienceQuestions.Enqueue(("Science Question " + i));
+				_sportsQuestions.Enqueue(("Sports Question "   + i));
+				_rockQuestions.Enqueue("Rock Question " + i);
 			}
 		}
 
@@ -26,23 +26,19 @@ namespace Trivia
 		{
 			if (currentCategory == "Pop")
 			{
-				Console.WriteLine(this._popQuestions.First());
-				this._popQuestions.RemoveFirst();
+				Console.WriteLine(this._popQuestions.Dequeue());
 			}
 			if (currentCategory == "Science")
 			{
-				Console.WriteLine(this._scienceQuestions.First());
-				this._scienceQuestions.RemoveFirst();
+				Console.WriteLine(this._scienceQuestions.Dequeue());
 			}
 			if (currentCategory == "Sports")
 			{
-				Console.WriteLine(this._sportsQuestions.First());
-				this._sportsQuestions.RemoveFirst();
+				Console.WriteLine(this._sportsQuestions.Dequeue());
 			}
 			if (currentCategory == "Rock")
 			{
-				Console.WriteLine(this._rockQuestions.First());
-				this._rockQuestions.RemoveFirst();
+				Console.WriteLine(this._rockQuestions.Dequeue());
 			}
 		}
 	}
