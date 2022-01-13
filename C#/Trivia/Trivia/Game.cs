@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Trivia
 {
-    public class Game
+	public class Game
     {
         private readonly List<string> _players = new List<string>();
 
@@ -13,23 +13,13 @@ namespace Trivia
 
         private readonly bool[] _inPenaltyBox = new bool[6];
 
-        private readonly LinkedList<string> _popQuestions = new LinkedList<string>();
-        private readonly LinkedList<string> _scienceQuestions = new LinkedList<string>();
-        private readonly LinkedList<string> _sportsQuestions = new LinkedList<string>();
-        private readonly LinkedList<string> _rockQuestions = new LinkedList<string>();
-
-        private int _currentPlayer;
-        private bool _isGettingOutOfPenaltyBox;
+        private          int       _currentPlayer;
+        private          bool      _isGettingOutOfPenaltyBox;
+        private readonly Questions questions;
 
         public Game()
         {
-            for (var i = 0; i < 50; i++)
-            {
-                _popQuestions.AddLast("Pop Question " + i);
-                _scienceQuestions.AddLast(("Science Question " + i));
-                _sportsQuestions.AddLast(("Sports Question " + i));
-                _rockQuestions.AddLast("Rock Question " + i);
-            }
+	        questions = new Questions();
         }
 
         public bool Add(string playerName)
@@ -93,23 +83,23 @@ namespace Trivia
         {
             if (CurrentCategory() == "Pop")
             {
-                Console.WriteLine(_popQuestions.First());
-                _popQuestions.RemoveFirst();
+                Console.WriteLine(questions._popQuestions.First());
+                questions._popQuestions.RemoveFirst();
             }
             if (CurrentCategory() == "Science")
             {
-                Console.WriteLine(_scienceQuestions.First());
-                _scienceQuestions.RemoveFirst();
+                Console.WriteLine(questions._scienceQuestions.First());
+                questions._scienceQuestions.RemoveFirst();
             }
             if (CurrentCategory() == "Sports")
             {
-                Console.WriteLine(_sportsQuestions.First());
-                _sportsQuestions.RemoveFirst();
+                Console.WriteLine(questions._sportsQuestions.First());
+                questions._sportsQuestions.RemoveFirst();
             }
             if (CurrentCategory() == "Rock")
             {
-                Console.WriteLine(_rockQuestions.First());
-                _rockQuestions.RemoveFirst();
+                Console.WriteLine(questions._rockQuestions.First());
+                questions._rockQuestions.RemoveFirst();
             }
         }
 
