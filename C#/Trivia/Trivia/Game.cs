@@ -15,13 +15,8 @@ namespace Trivia
 
         private          int       _currentPlayer;
         private          bool      _isGettingOutOfPenaltyBox;
-        private readonly Questions questions;
-
-        public Game()
-        {
-	        questions = new Questions();
-        }
-
+        private readonly Questions questions = new Questions();
+		
         public bool Add(string playerName)
         {
             _players.Add(playerName);
