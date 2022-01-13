@@ -22,21 +22,21 @@ namespace Trivia
 			}
 		}
 
-		public void AskQuestion(String currentCategory)
+		public void AskQuestion(Category currentCategory)
 		{
-			if (currentCategory == "Pop")
+			if (currentCategory == Category.Pop)
 			{
 				Console.WriteLine(this._popQuestions.Dequeue());
 			}
-			if (currentCategory == "Science")
+			if (currentCategory == Category.Science)
 			{
 				Console.WriteLine(this._scienceQuestions.Dequeue());
 			}
-			if (currentCategory == "Sports")
+			if (currentCategory == Category.Sports)
 			{
 				Console.WriteLine(this._sportsQuestions.Dequeue());
 			}
-			if (currentCategory == "Rock")
+			if (currentCategory == Category.Rock)
 			{
 				Console.WriteLine(this._rockQuestions.Dequeue());
 			}

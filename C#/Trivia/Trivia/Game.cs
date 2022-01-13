@@ -74,18 +74,21 @@ namespace Trivia
             }
         }
 
-        public string CurrentCategory()
+        public Category CurrentCategory()
         {
-            if (_places[_currentPlayer] == 0) return "Pop";
-            if (_places[_currentPlayer] == 4) return "Pop";
-            if (_places[_currentPlayer] == 8) return "Pop";
-            if (_places[_currentPlayer] == 1) return "Science";
-            if (_places[_currentPlayer] == 5) return "Science";
-            if (_places[_currentPlayer] == 9) return "Science";
-            if (_places[_currentPlayer] == 2) return "Sports";
-            if (_places[_currentPlayer] == 6) return "Sports";
-            if (_places[_currentPlayer] == 10) return "Sports";
-            return "Rock";
+	        return _places[_currentPlayer] switch
+	        {
+			        0  => Category.Pop,
+			        4  => Category.Pop,
+			        8  => Category.Pop,
+			        1  => Category.Science,
+			        5  => Category.Science,
+			        9  => Category.Science,
+			        2  => Category.Sports,
+			        6  => Category.Sports,
+			        10 => Category.Sports,
+			        _  => Category.Rock
+	        };
         }
 
         public bool WasCorrectlyAnswered()
