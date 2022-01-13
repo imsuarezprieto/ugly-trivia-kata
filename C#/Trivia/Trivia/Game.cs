@@ -53,7 +53,7 @@ namespace Trivia
                             + "'s new location is "
                             + _places[_currentPlayer]);
                     Console.WriteLine("The category is " + CurrentCategory());
-                    AskQuestion();
+                    questions.AskQuestion(CurrentCategory());
                 }
                 else
                 {
@@ -70,35 +70,11 @@ namespace Trivia
                         + "'s new location is "
                         + _places[_currentPlayer]);
                 Console.WriteLine("The category is " + CurrentCategory());
-                AskQuestion();
+                questions.AskQuestion(CurrentCategory());
             }
         }
 
-        private void AskQuestion()
-        {
-            if (CurrentCategory() == "Pop")
-            {
-                Console.WriteLine(questions._popQuestions.First());
-                questions._popQuestions.RemoveFirst();
-            }
-            if (CurrentCategory() == "Science")
-            {
-                Console.WriteLine(questions._scienceQuestions.First());
-                questions._scienceQuestions.RemoveFirst();
-            }
-            if (CurrentCategory() == "Sports")
-            {
-                Console.WriteLine(questions._sportsQuestions.First());
-                questions._sportsQuestions.RemoveFirst();
-            }
-            if (CurrentCategory() == "Rock")
-            {
-                Console.WriteLine(questions._rockQuestions.First());
-                questions._rockQuestions.RemoveFirst();
-            }
-        }
-
-        private string CurrentCategory()
+        public string CurrentCategory()
         {
             if (_places[_currentPlayer] == 0) return "Pop";
             if (_places[_currentPlayer] == 4) return "Pop";

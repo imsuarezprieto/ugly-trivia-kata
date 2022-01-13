@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Trivia
 {
@@ -17,6 +19,30 @@ namespace Trivia
 				_scienceQuestions.AddLast(("Science Question " + i));
 				_sportsQuestions.AddLast(("Sports Question "   + i));
 				_rockQuestions.AddLast("Rock Question " + i);
+			}
+		}
+
+		public void AskQuestion(String currentCategory)
+		{
+			if (currentCategory == "Pop")
+			{
+				Console.WriteLine(this._popQuestions.First());
+				this._popQuestions.RemoveFirst();
+			}
+			if (currentCategory == "Science")
+			{
+				Console.WriteLine(this._scienceQuestions.First());
+				this._scienceQuestions.RemoveFirst();
+			}
+			if (currentCategory == "Sports")
+			{
+				Console.WriteLine(this._sportsQuestions.First());
+				this._sportsQuestions.RemoveFirst();
+			}
+			if (currentCategory == "Rock")
+			{
+				Console.WriteLine(this._rockQuestions.First());
+				this._rockQuestions.RemoveFirst();
 			}
 		}
 	}
