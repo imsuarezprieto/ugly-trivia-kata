@@ -25,13 +25,13 @@ namespace Trivia
 
 		        if (random.Next(9) == 7)
 		        {
-			        _notAWinner = aGame.WrongAnswer();
+			        aGame.WrongAnswer();
 		        }
 		        else
 		        {
-			        _notAWinner = aGame.WasCorrectlyAnswered();
+			        aGame.WasCorrectlyAnswered();
 		        }
-	        } while (_notAWinner);
+	        } while (!aGame.HasWinner);
         }
     }
 }

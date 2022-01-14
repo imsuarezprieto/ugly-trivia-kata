@@ -22,5 +22,7 @@ namespace Trivia
 			this.Place += places;
 			Console.WriteLine($"{this}'s new location is {this.Place}");
 		}
+
+		public bool HasFullPurse => this.Purse == 6;
 	}
 }

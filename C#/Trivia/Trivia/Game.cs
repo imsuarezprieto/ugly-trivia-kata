@@ -48,7 +48,7 @@ namespace Trivia
             }
         }
 
-        public bool WasCorrectlyAnswered()
+        public void WasCorrectlyAnswered()
         {
             if (_players.Current.IsInPenaltyBox)
             {
@@ -60,12 +60,6 @@ namespace Trivia
                             + " now has "
                             + _players.Current.Purse
                             + " Gold Coins.");
-
-                    return DidPlayerWin();
-                }
-                else
-                {
-                    return true;
                 }
             }
             else
@@ -76,24 +70,18 @@ namespace Trivia
                         + " now has "
                         + _players.Current.Purse
                         + " Gold Coins.");
-
-                return DidPlayerWin();
             }
         }
 
-        public bool WrongAnswer()
+        public void WrongAnswer()
         {
             Console.WriteLine("Question was incorrectly answered");
             Console.WriteLine(_players.Current + " was sent to the penalty box");
             _players.Current.IsInPenaltyBox = true;
-            return true;
         }
 
 
-        private bool DidPlayerWin()
-        {
-            return !(_players.Current.Purse == 6);
-        }
-    }
+		public bool HasWinner => _players.Current.HasFullPurse;
+	}
 
 }
