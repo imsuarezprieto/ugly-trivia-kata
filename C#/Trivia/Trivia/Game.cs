@@ -61,9 +61,7 @@ namespace Trivia
                             + _players.Current.Purse
                             + " Gold Coins.");
 
-                    var winner = DidPlayerWin();
-
-                    return winner;
+                    return DidPlayerWin();
                 }
                 else
                 {
@@ -79,9 +77,7 @@ namespace Trivia
                         + _players.Current.Purse
                         + " Gold Coins.");
 
-                var winner = DidPlayerWin();
-
-                return winner;
+                return DidPlayerWin();
             }
         }
 
@@ -90,7 +86,6 @@ namespace Trivia
             Console.WriteLine("Question was incorrectly answered");
             Console.WriteLine(_players.Current + " was sent to the penalty box");
             _players.Current.IsInPenaltyBox = true;
-
             return true;
         }
 
