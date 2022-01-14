@@ -17,29 +17,23 @@ namespace Trivia
 						)
 				);
 
-		private static KeyValuePair<Category, QuestionDeck> CategoryQuestions(Category category)
-		{
-			return new KeyValuePair<Category, QuestionDeck>(
-					category,
-					new QuestionDeck(
-							QuestionPerCategory(category)
-					)
-			);
-		}
+		private static KeyValuePair<Category, QuestionDeck> CategoryQuestions(Category category) =>
+				new KeyValuePair<Category, QuestionDeck>(
+						category,
+						new QuestionDeck(
+								QuestionPerCategory(category)
+						)
+				);
 
-		private static IEnumerable<string> QuestionPerCategory(Category category)
-		{
-			return Enumerable.Range(0, nQuestionsPerCategory)
-					.Select(n =>
-							$"{category} Question {n}"
-					);
-		}
+		private static IEnumerable<string> QuestionPerCategory(Category category) =>
+				Enumerable.Range(0, nQuestionsPerCategory)
+						.Select(n =>
+								$"{category} Question {n}"
+						);
 
-		public void AskQuestion(Category category)
-		{
-			Console.WriteLine(
-					_questions[category].Dequeue()
-			);
-		}
+		public void AskQuestion(Category category) =>
+				Console.WriteLine(
+						_questions[category].Dequeue()
+				);
 	}
 }
