@@ -28,8 +28,8 @@ namespace Trivia
                     _isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(_players.Current + " is getting out of the penalty box");
-                    _players.Current.Place = _players.Current.Place + roll;
-                    if (_players.Current.Place > 11) _players.Current.Place = _players.Current.Place - 12;
+
+					_players.Current.Advance(roll);
 
                     Console.WriteLine(_players.Current
                             + "'s new location is "
@@ -45,10 +45,9 @@ namespace Trivia
             }
             else
             {
-	            _players.Current.Place = _players.Current.Place + roll;
-                if (_players.Current.Place > 11) _players.Current.Place = _players.Current.Place - 12;
+				_players.Current.Advance(roll);
 
-                Console.WriteLine(_players.Current
+				Console.WriteLine(_players.Current
                         + "'s new location is "
                         + _players.Current.Place);
                 Console.WriteLine("The category is " + CurrentCategory());
@@ -56,22 +55,7 @@ namespace Trivia
             }
         }
 
-        public Category CurrentCategory()
-        {
-	        return _players.Current.Place switch
-	        {
-			        0  => Category.Pop,
-			        4  => Category.Pop,
-			        8  => Category.Pop,
-			        1  => Category.Science,
-			        5  => Category.Science,
-			        9  => Category.Science,
-			        2  => Category.Sports,
-			        6  => Category.Sports,
-			        10 => Category.Sports,
-			        _  => Category.Rock
-	        };
-        }
+        public Category CurrentCategory() => _players.Current.Place.Category;
 
         public bool WasCorrectlyAnswered()
         {

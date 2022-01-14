@@ -32,10 +32,9 @@ namespace Trivia
 				this.Category = category;
 			}
 
-			public Place Advance(int places)
-			{
-				return _places[(_places.IndexOf(this) + places) % _places.Count];
-			}
+			public static Place operator +(Place place, int places) => _places[(_places.IndexOf(place) + places) % _places.Count];
+
+			public override string ToString() => $"{_places.IndexOf(this)}";
 		}
 	}
 }
