@@ -70,7 +70,7 @@ namespace Trivia
             }
             else
             {
-                Console.WriteLine("Answer was corrent!!!!");
+                Console.WriteLine("Answer was correct!!!!");
                 _players.Current.Purse++;
                 Console.WriteLine(_players.Current
                         + " now has "
