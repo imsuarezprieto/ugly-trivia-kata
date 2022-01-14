@@ -6,8 +6,6 @@ namespace Trivia
 {
 	public class Game
     {
-	    private          bool    _isGettingOutOfPenaltyBox;
-
 	    private readonly Players   _players  = new Players();
 	    private readonly Questions questions = new Questions();
 
@@ -21,46 +19,30 @@ namespace Trivia
 	        this._players.Next();
             Console.WriteLine("They have rolled a " + roll);
 
-            if (_players.Current.IsInPenaltyBox)
+            if (_players.Current.IsInPenaltyBox != null)
             {
-                if (roll % 2 != 0)
-                {
-                    _isGettingOutOfPenaltyBox = true;
-
-                    Console.WriteLine(_players.Current + " is getting out of the penalty box");
-
-					_players.Current.Advance(roll);
-
-                    questions.AskQuestion(
-		                    _players.Current.Place.Category);
-                }
-                else
-                {
-                    Console.WriteLine(_players.Current + " is not getting out of the penalty box");
-                    _isGettingOutOfPenaltyBox = false;
-                }
+	            if (roll % 2 == 0)
+	            {
+		          _players.Current.StayInPenaltyBox();
+		          return;
+	            }
+	            else
+	            {
+		            _players.Current.GetOutPenaltyBox();
+	            }
             }
-            else
-            {
-				_players.Current.Advance(roll);
-				questions.AskQuestion(
+
+	        _players.Current.Advance(roll);
+	        questions.AskQuestion(
 		                _players.Current.Place.Category);
-            }
+            
         }
 
         public void WasCorrectlyAnswered()
         {
-            if (_players.Current.IsInPenaltyBox)
+            if (!_players.Current.IsInPenaltyBox ?? true)
             {
-                if (_isGettingOutOfPenaltyBox)
-                {
-                    Console.WriteLine("Answer was correct!!!!");
-                    _players.Current.AddCoin();
-                }
-            }
-            else
-            {
-                Console.WriteLine("Answer was correct!!!!");
+	            Console.WriteLine("Answer was correct!!!!");
                 _players.Current.AddCoin();
             }
         }
@@ -68,8 +50,7 @@ namespace Trivia
         public void WrongAnswer()
         {
             Console.WriteLine("Question was incorrectly answered");
-            Console.WriteLine(_players.Current + " was sent to the penalty box");
-            _players.Current.IsInPenaltyBox = true;
+            _players.Current.GoToPenaltyBox();
         }
 
 
