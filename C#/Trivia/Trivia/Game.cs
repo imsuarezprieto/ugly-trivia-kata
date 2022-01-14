@@ -40,11 +40,9 @@ namespace Trivia
 
         public void WasCorrectlyAnswered()
         {
-            if (!_players.Current.IsInPenaltyBox ?? true)
-            {
-	            Console.WriteLine("Answer was correct!!!!");
-                _players.Current.AddCoin();
-            }
+	        if (_players.Current.IsInPenaltyBox ?? false) return;
+	        Console.WriteLine("Answer was correct!!!!");
+	        _players.Current.AddCoin();
         }
 
         public void WrongAnswer()
