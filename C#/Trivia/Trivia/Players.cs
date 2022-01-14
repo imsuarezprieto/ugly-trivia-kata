@@ -6,7 +6,7 @@ namespace Trivia
 	public class Players
 	{
 		private readonly List<Player> _players = new List<Player>();
-		private          int          current  = 0;
+		private          int          current  = 2;
 
 		public Player Current => this._players[current];
 
@@ -21,6 +21,7 @@ namespace Trivia
 		public void Next()
 		{
 			this.current = ++this.current % this._players.Count;
+			Console.WriteLine($"{this.Current} is the current player");
 		}
 	}
 }

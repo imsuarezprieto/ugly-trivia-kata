@@ -18,7 +18,7 @@ namespace Trivia
 
         public void Roll(int roll)
         {
-            Console.WriteLine(_players.Current + " is the current player");
+	        this._players.Next();
             Console.WriteLine("They have rolled a " + roll);
 
             if (_players.Current.IsInPenaltyBox)
@@ -62,13 +62,11 @@ namespace Trivia
                             + " Gold Coins.");
 
                     var winner = DidPlayerWin();
-                    this._players.Next();
 
                     return winner;
                 }
                 else
                 {
-                    this._players.Next();
                     return true;
                 }
             }
@@ -82,7 +80,6 @@ namespace Trivia
                         + " Gold Coins.");
 
                 var winner = DidPlayerWin();
-                this._players.Next();
 
                 return winner;
             }
@@ -94,7 +91,6 @@ namespace Trivia
             Console.WriteLine(_players.Current + " was sent to the penalty box");
             _players.Current.IsInPenaltyBox = true;
 
-            this._players.Next();
             return true;
         }
 
