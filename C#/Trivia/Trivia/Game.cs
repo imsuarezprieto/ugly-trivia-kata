@@ -34,7 +34,8 @@ namespace Trivia
                     Console.WriteLine(_players.Current
                             + "'s new location is "
                             + _players.Current.Place);
-                    questions.AskQuestion(CurrentCategory());
+                    questions.AskQuestion(
+		                    _players.Current.Place.Category);
                 }
                 else
                 {
@@ -49,11 +50,10 @@ namespace Trivia
 				Console.WriteLine(_players.Current
                         + "'s new location is "
                         + _players.Current.Place);
-                questions.AskQuestion(CurrentCategory());
+                questions.AskQuestion(
+		                _players.Current.Place.Category);
             }
         }
-
-        public Category CurrentCategory() => _players.Current.Place.Category;
 
         public bool WasCorrectlyAnswered()
         {
