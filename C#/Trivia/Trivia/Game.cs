@@ -31,9 +31,6 @@ namespace Trivia
 
 					_players.Current.Advance(roll);
 
-                    Console.WriteLine(_players.Current
-                            + "'s new location is "
-                            + _players.Current.Place);
                     questions.AskQuestion(
 		                    _players.Current.Place.Category);
                 }
@@ -46,11 +43,7 @@ namespace Trivia
             else
             {
 				_players.Current.Advance(roll);
-
-				Console.WriteLine(_players.Current
-                        + "'s new location is "
-                        + _players.Current.Place);
-                questions.AskQuestion(
+				questions.AskQuestion(
 		                _players.Current.Place.Category);
             }
         }

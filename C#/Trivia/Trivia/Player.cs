@@ -1,4 +1,6 @@
-﻿namespace Trivia
+﻿using System;
+
+namespace Trivia
 {
 	public class Player
 	{
@@ -18,6 +20,7 @@
 		public void Advance(int places)
 		{
 			this.Place += places;
+			Console.WriteLine($"{this}'s new location is {this.Place}");
 		}
 	}
 }
