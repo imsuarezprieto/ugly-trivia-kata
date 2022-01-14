@@ -55,21 +55,13 @@ namespace Trivia
                 if (_isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
-                    _players.Current.Purse++;
-                    Console.WriteLine(_players.Current
-                            + " now has "
-                            + _players.Current.Purse
-                            + " Gold Coins.");
+                    _players.Current.AddCoin();
                 }
             }
             else
             {
                 Console.WriteLine("Answer was correct!!!!");
-                _players.Current.Purse++;
-                Console.WriteLine(_players.Current
-                        + " now has "
-                        + _players.Current.Purse
-                        + " Gold Coins.");
+                _players.Current.AddCoin();
             }
         }
 

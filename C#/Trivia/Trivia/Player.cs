@@ -24,5 +24,11 @@ namespace Trivia
 		}
 
 		public bool HasFullPurse => this.Purse == 6;
+
+		public void AddCoin()
+		{
+			this.Purse++;
+			Console.WriteLine($"{this} now has {this.Purse} Gold Coins.");
+		}
 	}
 }
