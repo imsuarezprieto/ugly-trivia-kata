@@ -33,7 +33,7 @@ namespace Trivia
 
 		public void AskQuestion(Category category) =>
 				Console.WriteLine(
-						_questions[category].Dequeue()
+						$"The category is {category}\r\n{_questions[category].Dequeue()}"
 				);
 	}
 }

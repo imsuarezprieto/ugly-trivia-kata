@@ -34,7 +34,6 @@ namespace Trivia
                     Console.WriteLine(_players.Current
                             + "'s new location is "
                             + _players.Current.Place);
-                    Console.WriteLine("The category is " + CurrentCategory());
                     questions.AskQuestion(CurrentCategory());
                 }
                 else
@@ -50,7 +49,6 @@ namespace Trivia
 				Console.WriteLine(_players.Current
                         + "'s new location is "
                         + _players.Current.Place);
-                Console.WriteLine("The category is " + CurrentCategory());
                 questions.AskQuestion(CurrentCategory());
             }
         }
