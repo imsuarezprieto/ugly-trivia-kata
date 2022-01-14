@@ -80,10 +80,10 @@ namespace Trivia
                 if (_isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
-                    _players.Current.Purses++;
+                    _players.Current.Purse++;
                     Console.WriteLine(_players.Current
                             + " now has "
-                            + _players.Current.Purses
+                            + _players.Current.Purse
                             + " Gold Coins.");
 
                     var winner = DidPlayerWin();
@@ -100,10 +100,10 @@ namespace Trivia
             else
             {
                 Console.WriteLine("Answer was corrent!!!!");
-                _players.Current.Purses++;
+                _players.Current.Purse++;
                 Console.WriteLine(_players.Current
                         + " now has "
-                        + _players.Current.Purses
+                        + _players.Current.Purse
                         + " Gold Coins.");
 
                 var winner = DidPlayerWin();
@@ -126,7 +126,7 @@ namespace Trivia
 
         private bool DidPlayerWin()
         {
-            return !(_players.Current.Purses == 6);
+            return !(_players.Current.Purse == 6);
         }
     }
 
