@@ -12,13 +12,12 @@ namespace Trivia
         private          bool      _isGettingOutOfPenaltyBox;
         private readonly Questions questions = new Questions();
 
-        public bool Add(string playerName)
+        public void Add(string playerName)
         {
             _players.Add(new Player(playerName));
 
-            Console.WriteLine(playerName + " was added");
-            Console.WriteLine("They are player number " + _players.Count);
-            return true;
+            Console.WriteLine($"{playerName} was added");
+            Console.WriteLine($"They are player number {_players.Count}");
         }
 
         public void Roll(int roll)
