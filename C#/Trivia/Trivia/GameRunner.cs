@@ -2,35 +2,28 @@
 
 namespace Trivia
 {
-    public class GameRunner
-    {
-        public static void Main(string[] args)
-        {
-	        RunGame(new Random());
-        }
+	public class GameRunner
+	{
+		public static void Main(string[] args)
+		{
+			RunGame(new Random());
+		}
 
-        public static void RunGame(Random random)
-        {
-	        Die die = new Die(random);
-	        new Game()
-			        .AddPlayer(name: "Chet")
-			        .AddPlayer(name: "Pat")
-			        .AddPlayer(name: "Sue")
-			        .Until(Game.HasWinner, game =>
-			        {
-				        game.NexPlayer();
-				        game.Roll(die);
-				        game.AskQuestion();
-
-				        if (random.Next(9) == 7)
-				        {
-					        game.WrongAnswer();
-				        }
-				        else
-				        {
-					        game.CorrectAnswered();
-				        }
-					});
-        }
-    }
+		public static void RunGame(Random random)
+		{
+			Die die = new Die(random);
+			new Game()
+					.AddPlayer("Chet")
+					.AddPlayer("Pat")
+					.AddPlayer("Sue")
+					.Until(Game.HasWinner, game =>
+							_ = game
+									.NexPlayer()
+									.Roll(die)
+									.AskQuestion()
+									.SimulateAnswer(die)
+									.CorrectAnswered()
+							 ?? game.WrongAnswer());
+		}
+	}
 }

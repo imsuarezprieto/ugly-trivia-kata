@@ -6,8 +6,9 @@ namespace Trivia
 	{
 		private readonly Random random;
 
-		public int Result { get; private set; }
-		public bool IsEven => Result % 2 == 0;
+		public int  Result        { get; private set; }
+		public bool IsEven        => Result % 2     == 0;
+		public bool CorrectAnswer => random.Next(9) == 7;
 
 		public Die(Random random)
 		{

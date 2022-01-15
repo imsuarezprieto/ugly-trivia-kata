@@ -16,7 +16,7 @@ namespace Trivia
             return this;
         }
 
-        public void Roll(Die die)
+        public Game Roll(Die die)
         {
 			die.Roll();
             Console.WriteLine($"They have rolled a {die.Result}");
@@ -25,12 +25,14 @@ namespace Trivia
 	            CheckPenaltyBox(die);
 
             Advance(die.Result);
+            return this;
         }
 
-        public void NexPlayer()
+        public Game NexPlayer()
         {
 	        this._players.Next();
 	        this.currentPlayer = _players.Current;
+	        return this;
         }
 
         private void CheckPenaltyBox(Die die)
@@ -41,11 +43,12 @@ namespace Trivia
 		        currentPlayer.GetOutPenaltyBox();
         }
 
-        public void AskQuestion()
+        public Game AskQuestion()
         {
-	        if (currentPlayer.IsInPenaltyBox ?? false) return;
+	        if (currentPlayer.IsInPenaltyBox ?? false) return this;
 	        questions.AskQuestion(
 			        currentPlayer.Place.Category);
+	        return this;
         }
 
         private void Advance(int roll)
@@ -54,20 +57,24 @@ namespace Trivia
 	        currentPlayer.Advance(roll);
         }
 
-        public void CorrectAnswered()
+        public Game CorrectAnswered()
         {
-	        if (currentPlayer.IsInPenaltyBox ?? false) return;
+	        if (currentPlayer.IsInPenaltyBox ?? false) return this;
 	        Console.WriteLine("Answer was correct!!!!");
 	        currentPlayer.AddCoin();
+	        return this;
         }
 
-        public void WrongAnswer()
+        public Game WrongAnswer()
         {
             Console.WriteLine("Question was incorrectly answered");
             currentPlayer.GoToPenaltyBox();
+            return this;
         }
 
         public static bool HasWinner(Game game) => game.currentPlayer?.HasFullPurse ?? false;
-	}
+
+        public Game SimulateAnswer(Die die) => die.CorrectAnswer ? this : null;
+    }
 
 }
