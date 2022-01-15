@@ -5,47 +5,42 @@ namespace Trivia
 	public class Player
 	{
 		private readonly string _name;
+		private          int    _purse;
 
-		public Player(string name)
-		{
-			this._name = name;
-		}
+		public Player(string name) => _name = name;
 
-		public Board.Place Place          { get; set; } = Board.InitialPlace;
-		public int         Purse          { get; set; } = 0;
-		public bool?        IsInPenaltyBox { get; set; }
-
-		public override string ToString() => this._name;
+		public          Board.Place Place          { get; set; } = Board.InitialPlace;
+		public          bool?       IsInPenaltyBox { get; set; }
+		public          bool        HasFullPurse   => _purse == 6;
+		public override string      ToString()     => _name;
 
 		public void Advance(int places)
 		{
-			this.Place += places;
-			Console.WriteLine($"{this}'s new location is {this.Place}");
+			Place += places;
+			Console.WriteLine($"{this}'s new location is {Place}");
 		}
-
-		public bool HasFullPurse => this.Purse == 6;
 
 		public void AddCoin()
 		{
-			this.Purse++;
-			Console.WriteLine($"{this} now has {this.Purse} Gold Coins.");
+			_purse++;
+			Console.WriteLine($"{this} now has {_purse} Gold Coins.");
 		}
 
 		public void GoToPenaltyBox()
 		{
-			this.IsInPenaltyBox = true;
+			IsInPenaltyBox = true;
 			Console.WriteLine($"{this} was sent to the penalty box");
 		}
 
 		public void StayInPenaltyBox()
 		{
-			this.IsInPenaltyBox = true;
+			IsInPenaltyBox = true;
 			Console.WriteLine($"{this} is not getting out of the penalty box");
 		}
 
 		public void GetOutPenaltyBox()
 		{
-			this.IsInPenaltyBox = false;
+			IsInPenaltyBox = false;
 			Console.WriteLine($"{this} is getting out of the penalty box");
 		}
 	}
