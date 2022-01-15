@@ -29,7 +29,7 @@ namespace Trivia
 		        }
 		        else
 		        {
-			        aGame.WasCorrectlyAnswered();
+			        aGame.CorrectAnswered();
 		        }
 	        } while (!aGame.HasWinner);
         }

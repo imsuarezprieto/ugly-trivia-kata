@@ -54,7 +54,7 @@ namespace Trivia
 	        currentPlayer.Advance(roll);
         }
 
-        public void WasCorrectlyAnswered()
+        public void CorrectAnswered()
         {
 	        if (currentPlayer.IsInPenaltyBox ?? false) return;
 	        Console.WriteLine("Answer was correct!!!!");
