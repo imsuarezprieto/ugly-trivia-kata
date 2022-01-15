@@ -33,9 +33,14 @@ namespace Trivia
             }
 
 	        Advance(roll);
+	        AskQuestion();
+        }
+
+        private void AskQuestion()
+        {
+	        if (_players.Current.IsInPenaltyBox ?? false) return;
 	        questions.AskQuestion(
-		                _players.Current.Place.Category);
-            
+			        _players.Current.Place.Category);
         }
 
         private void Advance(int roll)
