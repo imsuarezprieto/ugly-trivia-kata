@@ -13,11 +13,10 @@ namespace Trivia
 
         public static void RunGame(Random random)
         {
-	        var aGame = new Game();
-
-	        aGame.Add("Chet");
-	        aGame.Add("Pat");
-	        aGame.Add("Sue");
+	        var aGame = new Game()
+					.AddPlayer( name: "Chet")
+			        .AddPlayer( name: "Pat")
+			        .AddPlayer( name: "Sue");
 
 	        do
 	        {

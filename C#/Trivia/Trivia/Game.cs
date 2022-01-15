@@ -10,9 +10,10 @@ namespace Trivia
 	    private readonly Players   _players  = new Players();
 	    private readonly Questions questions = new Questions();
 
-	    public void Add(string playerName)
+	    public Game AddPlayer(string name)
         {
-            _players.Add(playerName);
+            _players.Add(name);
+            return this;
         }
 
         public void Roll(int roll)
