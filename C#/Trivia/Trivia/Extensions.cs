@@ -6,7 +6,7 @@ namespace Trivia
 	{
 		public static TScoped Until<TScoped>(this TScoped @this, Predicate<TScoped> condition, Action<TScoped> scopedBlock)
 		{
-			if (!condition(@this)) return @this;
+			if (condition(@this)) return @this;
 			scopedBlock(@this);
 			return Until<TScoped>(@this, condition, scopedBlock);
 		}
