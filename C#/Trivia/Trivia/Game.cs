@@ -66,7 +66,7 @@ namespace Trivia
             currentPlayer.GoToPenaltyBox();
         }
 
-        public bool HasWinner => currentPlayer.HasFullPurse;
+        public static bool HasWinner(Game game) => game.currentPlayer?.HasFullPurse ?? false;
 	}
 
 }
