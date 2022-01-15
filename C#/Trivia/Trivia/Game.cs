@@ -16,14 +16,15 @@ namespace Trivia
             return this;
         }
 
-        public void Roll(int roll)
+        public void Roll(Die die)
         {
-            Console.WriteLine("They have rolled a " + roll);
+			die.Roll();
+            Console.WriteLine($"They have rolled a {die.Result}");
 
             if (currentPlayer.IsInPenaltyBox != null) 
-	            CheckPenaltyBox(roll);
+	            CheckPenaltyBox(die);
 
-            Advance(roll);
+            Advance(die.Result);
         }
 
         public void NexPlayer()
@@ -32,9 +33,9 @@ namespace Trivia
 	        this.currentPlayer = _players.Current;
         }
 
-        private void CheckPenaltyBox(int roll)
+        private void CheckPenaltyBox(Die die)
         {
-	        if (roll % 2 == 0)
+	        if (die.IsEven)
 		        currentPlayer.StayInPenaltyBox();
 	        else
 		        currentPlayer.GetOutPenaltyBox();

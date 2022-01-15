@@ -11,6 +11,7 @@ namespace Trivia
 
         public static void RunGame(Random random)
         {
+	        Die die = new Die(random);
 	        new Game()
 			        .AddPlayer(name: "Chet")
 			        .AddPlayer(name: "Pat")
@@ -18,7 +19,7 @@ namespace Trivia
 			        .Until(Game.HasWinner, game =>
 			        {
 				        game.NexPlayer();
-				        game.Roll(random.Next(5) + 1);
+				        game.Roll(die);
 				        game.AskQuestion();
 
 				        if (random.Next(9) == 7)
