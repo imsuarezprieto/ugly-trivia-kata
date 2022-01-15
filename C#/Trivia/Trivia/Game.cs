@@ -17,17 +17,15 @@ namespace Trivia
 
         public void Roll(int roll)
         {
-	        NexPlayer();
             Console.WriteLine("They have rolled a " + roll);
 
             if (currentPlayer.IsInPenaltyBox != null) 
 	            CheckPenaltyBox(roll);
 
             Advance(roll);
-	        AskQuestion();
         }
 
-        private void NexPlayer()
+        public void NexPlayer()
         {
 	        this._players.Next();
 	        this.currentPlayer = _players.Current;
@@ -41,7 +39,7 @@ namespace Trivia
 		        currentPlayer.GetOutPenaltyBox();
         }
 
-        private void AskQuestion()
+        public void AskQuestion()
         {
 	        if (currentPlayer.IsInPenaltyBox ?? false) return;
 	        questions.AskQuestion(

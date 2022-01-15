@@ -21,7 +21,9 @@ namespace Trivia
 
 	        do
 	        {
+				aGame.NexPlayer();
 		        aGame.Roll(random.Next(5) + 1);
+				aGame.AskQuestion();
 
 		        if (random.Next(9) == 7)
 		        {
