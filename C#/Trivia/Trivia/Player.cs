@@ -4,15 +4,15 @@ namespace Trivia
 {
 	public class Player
 	{
-		private readonly string _name;
-		private          int    _purse;
+		private readonly string name;
+		private          int    purse;
 
-		public Player(string name) => _name = name;
+		public Player(string name) => this.name = name;
 
 		public          Board.Place Place          { get; set; } = Board.InitialPlace;
 		public          bool?       IsInPenaltyBox { get; set; }
-		public          bool        HasFullPurse   => _purse == 6;
-		public override string      ToString()     => _name;
+		public          bool        HasFullPurse   => purse == 6;
+		public override string      ToString()     => name;
 
 		public void Advance(int places)
 		{
@@ -22,8 +22,8 @@ namespace Trivia
 
 		public void AddCoin()
 		{
-			_purse++;
-			Console.WriteLine($"{this} now has {_purse} Gold Coins.");
+			purse++;
+			Console.WriteLine($"{this} now has {purse} Gold Coins.");
 		}
 
 		public void GoToPenaltyBox()

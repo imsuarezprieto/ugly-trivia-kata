@@ -5,22 +5,22 @@ namespace Trivia
 {
 	public class Players
 	{
-		private readonly List<Player> _players = new List<Player>();
+		private readonly List<Player> players = new List<Player>();
 		private          int          current  = 2;
 
-		public Player Current => this._players[current];
+		public Player Current => this.players[current];
 
 		public void Add(string playerName)
 		{
-			this._players.Add(new Player(playerName));
+			this.players.Add(new Player(playerName));
 
 			Console.WriteLine($"{playerName} was added");
-			Console.WriteLine($"They are player number {_players.Count}");
+			Console.WriteLine($"They are player number {players.Count}");
 		}
 
 		public void Next()
 		{
-			this.current = ++this.current % this._players.Count;
+			this.current = ++this.current % this.players.Count;
 			Console.WriteLine($"{this.Current} is the current player");
 		}
 	}

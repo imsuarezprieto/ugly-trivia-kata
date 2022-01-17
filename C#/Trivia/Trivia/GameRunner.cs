@@ -2,10 +2,8 @@
 
 namespace Trivia
 {
-    public class GameRunner
+    public static class GameRunner
     {
-        private static bool _notAWinner;
-
         public static void Main(string[] args)
         {
 	        RunGame(new Random());

@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Trivia
 {
 	public class Game
     {
 	    private          Player    currentPlayer;
-	    private readonly Players   _players  = new Players();
+	    private readonly Players   players  = new Players();
 	    private readonly Questions questions = new Questions();
 
 	    public void Add(string playerName)
         {
-            _players.Add(playerName);
+            players.Add(playerName);
         }
 
         public void Roll(int roll)
@@ -27,8 +25,8 @@ namespace Trivia
 
         public void NexPlayer()
         {
-	        this._players.Next();
-	        this.currentPlayer = _players.Current;
+	        this.players.Next();
+	        this.currentPlayer = players.Current;
         }
 
         private void CheckPenaltyBox(int roll)

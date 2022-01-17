@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Trivia
 {
-	public class Board
+	public static class Board
 	{
-		private static readonly IList<Place> _places = new List<Place>()
+		private static readonly IList<Place> places = new List<Place>
 		{
 				new Place(Category.Pop),
 				new Place(Category.Science),
@@ -18,23 +17,29 @@ namespace Trivia
 				new Place(Category.Pop),
 				new Place(Category.Science),
 				new Place(Category.Sports),
-				new Place(Category.Rock),
+				new Place(Category.Rock)
 		};
 
-		public static Place InitialPlace => _places[0];
+		public static Place InitialPlace => places[0];
 
 		public class Place
 		{
-			public Category Category { get; }
-
 			public Place(Category category)
 			{
-				this.Category = category;
+				Category = category;
 			}
 
-			public static Place operator +(Place place, int places) => _places[(_places.IndexOf(place) + places) % _places.Count];
+			public Category Category { get; }
 
-			public override string ToString() => $"{_places.IndexOf(this)}";
+			public static Place operator +(Place place, int places)
+			{
+				return Board.places[(Board.places.IndexOf(place) + places) % Board.places.Count];
+			}
+
+			public override string ToString()
+			{
+				return $"{places.IndexOf(this)}";
+			}
 		}
 	}
 }
