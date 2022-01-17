@@ -8,9 +8,10 @@ namespace Trivia
 {
 	public class Questions
 	{
+		// ReSharper disable once InconsistentNaming
 		private const int nQuestionsPerCategory = 50;
 
-		private readonly Dictionary<Category, QuestionDeck> _questions =
+		private readonly Dictionary<Category, QuestionDeck> questions =
 				new Dictionary<Category, QuestionDeck>(
 						Category.Categories.Select(
 								CategoryQuestions
@@ -33,7 +34,7 @@ namespace Trivia
 
 		public void AskQuestion(Category category) =>
 				Console.WriteLine(
-						$"The category is {category}\r\n{_questions[category].Dequeue()}"
+						$"The category is {category}\r\n{questions[category].Dequeue()}"
 				);
 	}
 }
